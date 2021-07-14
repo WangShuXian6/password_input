@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useImperativeHandle, ChangeEvent, forwardRef } from "react"
+import { useState } from "react"
 import styles from "./index.module.scss"
 
 interface Key {
@@ -34,10 +34,9 @@ const numberKeys = [
 interface Props {
     onKeyPress: (key: number) => void,
     onDelete: () => void,
-    onClear?: () => void
 }
 
-const Keyboard = ({ onKeyPress, onDelete, onClear }: Props,) => {
+const Keyboard = ({ onKeyPress, onDelete }: Props,) => {
     let [selectedKeyString, setSelectKeyString] = useState<number | string>('')
     const handleKeyPress = (key: Key) => {
         console.log('key:', key)
@@ -61,7 +60,7 @@ const Keyboard = ({ onKeyPress, onDelete, onClear }: Props,) => {
                             <div
                                 className={styles.key}
                                 style={{ backgroundColor: selectedKeyString === key.mainText ? key.activeColor : key.bgColor }}
-                                key={keyIndex} onClick={() => { handleKeyPress(key) }}
+                                key={`${groupIndex - keyIndex}`} onClick={() => { handleKeyPress(key) }}
                             >{key.mainText}</div>
                         ))}
                     </div>
