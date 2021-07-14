@@ -5,11 +5,12 @@ interface Props {
     focus: boolean;
     fields: number;
     onComplete: (value: number) => void;
+    onBlur?: () => void;
+    onFocus?: () => void;
 }
 
-const InputPassword = ({ focus, fields, onComplete }: Props, ref: HTMLInputElement) => {
+const InputPassword = ({ focus, fields, onComplete, onBlur, onFocus }: Props, ref: HTMLInputElement) => {
     const [fakeInputList, setFakeInputList] = useState<number[]>([])
-    console.log(ref)
 
     let [password, setPassword] = useState<string>('')
     let [passwordLength, setPasswordLength] = useState<number>(0)
@@ -27,9 +28,9 @@ const InputPassword = ({ focus, fields, onComplete }: Props, ref: HTMLInputEleme
 
     useEffect(() => {
         buildFakeInput()
-        setTimeout(() => {
-            focus && passwordInputEl.current?.focus()
-        }, 5000)
+        return () => {
+            clearPassword()
+        }
     }, [])
 
     useEffect(() => {
@@ -75,11 +76,19 @@ const InputPassword = ({ focus, fields, onComplete }: Props, ref: HTMLInputEleme
     }
 
     const handleBlur = () => {
+        console.log('blur')
+        onBlur?.()
+        handleFocus()
+    }
+
+    const handleFocus = () => {
+        console.log('focus')
+        onFocus?.()
         focus && passwordInputEl.current?.focus()
     }
 
     return (
-        <div className={styles.inputPassword}>
+        <div className={styles.inputPassword} onClick={handleFocus}>
             <input type="tel"
                 value={password}
                 maxLength={fields}
@@ -95,17 +104,13 @@ const InputPassword = ({ focus, fields, onComplete }: Props, ref: HTMLInputEleme
                     fakeInputList.map((item, index) => {
                         return (
                             <div key={index} className={styles.wrapper}>
-                                <input type="password"
-                                    value={index < passwordLength ? index : ''}
-                                    readOnly
-                                    className={styles.fakeInput}
-                                    maxLength={1}
-                                />
+                                <div className={`${styles.dot} ${index < passwordLength ? styles.show : ''}`}></div>
                             </div>
                         )
                     })
                 }
             </div>
+            <div className={styles.version}>{passwordLength}</div>
         </div>
     )
 }

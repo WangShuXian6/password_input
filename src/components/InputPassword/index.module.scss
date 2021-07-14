@@ -22,6 +22,7 @@
     .fakeBox{
         display: flex;
         flex-direction: row;
+        width: 100%;
         border: 2px solid #ddd;
         border-radius: 4px;
         .wrapper{
@@ -29,6 +30,21 @@
             flex:1;
             width: 100%;
             height: 100%;
+
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-right: 1px solid #eee;
+        }
+        .dot{
+            display: none;
+            background-color:#333 ;
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+        }
+        .show{
+            display: flex;
         }
         .fakeInput{
             display: flex;
@@ -43,5 +59,12 @@
             text-align: center;
             vertical-align: middle;
         }
+    }
+    .version{
+        position: absolute;
+        right: 4px;
+        bottom: 0px;
+        font-size: 10px;
+        color:#333;
     }
 }

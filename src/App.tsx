@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import InputPassword from "./components/InputPassword"
 
 function App() {
+
+  let [tip, setTip] = useState<string>('init')
+  let [password, setPassword] = useState<number>()
   const handleComplete = (value: number) => {
-    console.log(value)
+    console.log("value:", value)
+    setPassword(value)
   }
   return (
     <div className="App">
@@ -25,9 +29,13 @@ function App() {
       </header> */}
 
       <div className='main'>
+        <div className="tip">{tip}</div>
+        <div className="tip password">{password}</div>
         <InputPassword focus={true}
           fields={6}
           onComplete={handleComplete}
+          onBlur={() => { setTip('blur') }}
+          onFocus={() => { setTip('focus') }}
         />
       </div>
     </div>
