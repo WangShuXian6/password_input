@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import InputPassword from "./components/InputPassword"
+import Keyboard from "./components/Keyboard"
+import InputNumber from './components/InputNumer'
 
 function App() {
 
   let [tip, setTip] = useState<string>('init')
-  let [password, setPassword] = useState<number>()
-  const handleComplete = (value: number) => {
+  let [password, setPassword] = useState<string>()
+  const passwordRef = useRef()
+  const handleComplete = (value: string) => {
     console.log("value:", value)
     setPassword(value)
   }
@@ -31,12 +33,16 @@ function App() {
       <div className='main'>
         <div className="tip">{tip}</div>
         <div className="tip password">{password}</div>
-        <InputPassword focus={true}
+        {/* <Keyboard onKeyPress={() => { }} onDelete={() => { }} /> */}
+
+        <InputNumber
           fields={6}
+          isKeboardFixed={true}
           onComplete={handleComplete}
-          onBlur={() => { setTip('blur') }}
-          onFocus={() => { setTip('focus') }}
-        />
+          ref={passwordRef}
+        >
+        </InputNumber>
+        <div className='blank'></div>
       </div>
     </div>
   );

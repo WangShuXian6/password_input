@@ -1,0 +1,75 @@
+.inputNumber{
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 52px;
+    border: none;
+    
+    .fakeBox{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        min-height: 52px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        .wrapper{
+            position: relative;
+            display: flex;
+            flex:1;
+            width: 100%;
+            height: 100%;
+
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-right: 1px solid #eee;
+        }
+        .dot{
+            display: none;
+            background-color:#333 ;
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+        }
+        .show{
+            display: flex;
+        }
+        .tip{
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 2px;
+            height: 40px;
+            background-color:  #FF6200;
+            border: none;
+        }
+        .tipShow{
+            display: flex;
+            //animation: name duration timing-function delay iteration-count direction fill-mode;
+            animation: breath 1s  infinite;
+        }
+
+        @keyframes breath {
+            0%{
+                opacity: 0;
+            }
+
+            100%{
+                opacity: 1;
+            }
+        }
+    }
+
+    .keyboard{
+        display: flex;
+        width: 100%;
+    }
+    .fixed{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+    }
+}

@@ -89,8 +89,20 @@ const InputPassword = ({ focus, fields, onComplete, onBlur, onFocus }: Props, re
 
     return (
         <div className={styles.inputPassword} onClick={handleFocus}>
+            <div className={styles.fakeBox}>
+                {
+                    fakeInputList.map((item, index) => {
+                        return (
+                            <div key={index} className={styles.wrapper}>
+                                {/* <div className={`${styles.dot} ${index < passwordLength ? styles.show : ''}`}></div> */}
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
             <input type="tel"
-                value={password}
+                //value={password}
                 maxLength={fields}
                 className={styles.password}
                 // @ts-ignore
@@ -99,7 +111,7 @@ const InputPassword = ({ focus, fields, onComplete, onBlur, onFocus }: Props, re
                 onBlur={handleBlur}
             />
 
-            <div className={styles.fakeBox}>
+            {/* <div className={styles.fakeBox}>
                 {
                     fakeInputList.map((item, index) => {
                         return (
@@ -109,7 +121,7 @@ const InputPassword = ({ focus, fields, onComplete, onBlur, onFocus }: Props, re
                         )
                     })
                 }
-            </div>
+            </div> */}
             <div className={styles.version}>{passwordLength}</div>
         </div>
     )

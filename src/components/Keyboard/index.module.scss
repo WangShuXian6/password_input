@@ -1,0 +1,35 @@
+$borderColor:#DEDEDE;
+
+.keyboard{
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: none;
+    background-color: #fff;
+    border:1px solid $borderColor;
+    .row{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .key{
+            display: inline-flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            border-top: 1px solid $borderColor;
+            border-right: 1px solid $borderColor;
+            color: #333;
+            font-size: 20px;
+            user-select: none;
+        }
+        .key:active{
+            background-color: blue;
+        }
+        .key.active{
+            background-color: rgb(179, 179, 206);
+        }
+    }
+}
