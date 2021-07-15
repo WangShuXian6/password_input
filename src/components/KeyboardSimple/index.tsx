@@ -1,12 +1,10 @@
-import { useState, useCallback } from "react"
+import { useState } from "react"
 import styles from "./index.module.scss"
-import deleteImage from './keyboard_delete@2x.png'
 
 interface Key {
     mainText: string | number, otherText: string, disable: boolean, bgColor: string
 }
 
-const defaultTitle = '哈银消费金融安全保护中'
 const bgColor = '#fff'
 const activeColor = 'rgb(179, 179, 206)'
 
@@ -26,26 +24,21 @@ const numberKeys = [
         { mainText: 8, otherText: 'TUV', disable: false, bgColor, activeColor },
         { mainText: 9, otherText: 'WXYZ', disable: false, bgColor, activeColor }
     ],
-    // [
-    //     { mainText: '', otherText: '', disable: true, bgColor: '#eee', activeColor: '#eee' },
-    //     { mainText: 0, otherText: '', disable: false, bgColor, activeColor },
-    //     { mainText: '删除', otherText: '', disable: false, bgColor: '#D2D5DC', activeColor }
-    // ]
+    [
+        { mainText: '', otherText: '', disable: true, bgColor: '#eee', activeColor: '#eee' },
+        { mainText: 0, otherText: '', disable: false, bgColor, activeColor },
+        { mainText: '删除', otherText: '', disable: false, bgColor: '#D2D5DC', activeColor }
+    ]
 ];
 
-const zeroKey = { mainText: 0, otherText: '', disable: false, bgColor, activeColor }
-const deleteKey = { mainText: '删除', otherText: '', disable: false, bgColor, activeColor }
-
 interface Props {
-    title?: string,
     onKeyPress: (key: number) => void,
     onDelete: () => void,
-    onClose?: () => void,
 }
 
-const Keyboard = ({ title = defaultTitle, onKeyPress, onDelete, onClose }: Props,) => {
+const KeyboardSimple = ({ onKeyPress, onDelete }: Props,) => {
     let [selectedKeyString, setSelectKeyString] = useState<number | string>('')
-    const handleKeyPress = useCallback((key: Key) => {
+    const handleKeyPress = (key: Key) => {
         console.log('key:', key)
         if (key.disable) return
         if (key.mainText === '删除') {
@@ -56,18 +49,10 @@ const Keyboard = ({ title = defaultTitle, onKeyPress, onDelete, onClose }: Props
         setTimeout(() => {
             setSelectKeyString('')
         }, 50)
-    }, [])
-
-    const handleClose = useCallback(() => {
-        onClose?.()
-    }, [])
+    }
 
     return (
         <div className={styles.keyboard}>
-            <div className={styles.header}>
-                <div className={styles.title}>{title}</div>
-                <div className={styles.arrow} onClick={() => { handleClose() }}></div>
-            </div>
             {
                 numberKeys.map((group, groupIndex) => (
                     <div key={groupIndex} className={styles.row}>
@@ -78,24 +63,10 @@ const Keyboard = ({ title = defaultTitle, onKeyPress, onDelete, onClose }: Props
                                 key={`${groupIndex - keyIndex}`} onClick={() => { handleKeyPress(key) }}
                             >{key.mainText}</div>
                         ))}
-
-
                     </div>
                 ))
             }
-            <div className={styles.row}>
-                <div
-                    className={`${styles.key} ${styles.zero}`}
-                    style={{ backgroundColor: selectedKeyString === zeroKey.mainText ? zeroKey.activeColor : zeroKey.bgColor }}
-                    onClick={() => { handleKeyPress(zeroKey) }}>{zeroKey.mainText}</div>
-                <div
-                    className={`${styles.key} ${styles.delete}`}
-                    style={{ backgroundColor: selectedKeyString === deleteKey.mainText ? deleteKey.activeColor : deleteKey.bgColor }}
-                    onClick={() => { handleKeyPress(deleteKey) }}>
-                    <img className={styles.delete_icon} src={deleteImage} alt="删除" />
-                </div>
-            </div>
         </div>
     )
 }
-export default Keyboard
+export default KeyboardSimple

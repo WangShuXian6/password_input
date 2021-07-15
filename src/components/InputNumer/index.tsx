@@ -12,6 +12,7 @@ interface Props {
 const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, ref: HTMLInputElement) => {
     const [fakeInputList, setFakeInputList] = useState<number[]>([])
 
+    let [keyboardShow, setKeyBoardShow] = useState<Boolean>(true)
     let [password, setPassword] = useState<string>('')
     let [passwordLength, setPasswordLength] = useState<number>(0)
     let passwordRef = useRef<string | null>(null)
@@ -69,7 +70,7 @@ const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, re
 
     return (
         <div className={styles.inputNumber}>
-            <div className={styles.fakeBox}>
+            <div className={styles.fakeBox} onClick={() => { setKeyBoardShow(true) }}>
                 {
                     fakeInputList.map((item, index) => {
                         return (
@@ -82,9 +83,11 @@ const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, re
                 }
             </div>
             {children}
-            <div className={`${styles.keyboard} ${isKeboardFixed ? styles.fixed : ''}`}>
-                <Keyboard onKeyPress={handleChange} onDelete={handleDelete} />
-            </div>
+            {
+                keyboardShow && <div className={`${styles.keyboard} ${isKeboardFixed ? styles.fixed : ''}`}>
+                    <Keyboard onKeyPress={handleChange} onDelete={handleDelete} onClose={() => { setKeyBoardShow(false) }} />
+                </div>
+            }
         </div>
     )
 }

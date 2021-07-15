@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Keyboard from "./components/Keyboard"
+//import Keyboard from "./components/Keyboard"
 import InputNumber from './components/InputNumer'
 
 function App() {
