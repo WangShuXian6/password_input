@@ -23,38 +23,37 @@ const Verification = ({ fields, isNumber = false, isPassword = false, onComplete
 
     useImperativeHandle(ref, () => {
         return {
-            clear: clearPassword,
+            clear: clearWords,
             focus: handleFocus
         }
     })
 
     useEffect(() => {
         return () => {
-            clearPassword()
+            clearWords()
         }
     }, [])
 
     useEffect(() => {
-        updatePasswordLength()
+        updateWords()
     }, [words])
 
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e?.target?.value
-        console.log('value::', value)
         if (wordsRef.current && wordsRef.current.length > fields) return
         const newWords = `${value || ''}`
         setWords(newWords)
     }
 
-    const updatePasswordLength = () => {
-        const passwordString = String(words === null ? "" : words)
-        if (passwordString.length === fields) {
+    const updateWords = () => {
+        const wordsString = String(words === null ? "" : words)
+        if (wordsString.length === fields) {
             onComplete(wordsRef.current || '')
         }
     }
 
-    const clearPassword = () => {
+    const clearWords = () => {
         setWords('')
         if (!inputRef.current) return
         inputRef.current.value = ''

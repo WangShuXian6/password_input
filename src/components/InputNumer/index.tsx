@@ -45,7 +45,7 @@ const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, re
     }
 
     const handleChange = (key: number) => {
-        if (passwordRef.current && passwordRef.current.length > fields) return
+        if (passwordRef.current && passwordRef.current.length >= fields) return
         const newPassword = `${passwordRef.current || ''}${key}`
         setPassword(newPassword)
     }
