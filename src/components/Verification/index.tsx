@@ -28,11 +28,11 @@ const Verification = ({ fields, isNumber = false, isPassword = false, onComplete
         }
     })
 
-    // useEffect(() => {
-    //     return () => {
-    //         clearPassword()
-    //     }
-    // }, [])
+    useEffect(() => {
+        return () => {
+            clearPassword()
+        }
+    }, [])
 
     useEffect(() => {
         updatePasswordLength()

@@ -10,7 +10,7 @@ interface Props {
 const CodeDisplayBox = ({ length, isPassword = false, words = '' }: Props,) => {
     const [fakeInputList, setFakeInputList] = useState<number[]>([])
 
-    let [codeLength, setCodeLength] = useState<number>(0)
+    const [codeLength, setCodeLength] = useState<number>(0)
 
     useEffect(() => {
         buildFakeInput()
