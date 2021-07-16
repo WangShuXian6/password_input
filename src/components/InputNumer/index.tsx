@@ -85,7 +85,9 @@ const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, re
             {children}
             {
                 keyboardShow && <div className={`${styles.keyboard} ${isKeboardFixed ? styles.fixed : ''}`}>
-                    <Keyboard onKeyPress={handleChange} onDelete={handleDelete} onClose={() => { setKeyBoardShow(false) }} />
+                    <div className={styles.place}>
+                        <Keyboard onKeyPress={handleChange} onDelete={handleDelete} onClose={() => { setKeyBoardShow(false) }} />
+                    </div>
                 </div>
             }
         </div>

@@ -1,0 +1,15 @@
+$borderColor:#DEDEDE;
+$background:#fff;
+$arrow:#B9B9B9;
+
+.verification {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    border: none;
+
+    .main {
+        letter-spacing: 10px;
+    }
+}

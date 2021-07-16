@@ -7,7 +7,7 @@ $arrow:#B9B9B9;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     border: none;
     background: #F5F5F5;
 
@@ -73,7 +73,8 @@ $arrow:#B9B9B9;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 114px;
+            //width: 114px;
+            width: 30.5vw;
             height: 48px;
             background: $background;
             border-radius: 4px;
@@ -95,13 +96,14 @@ $arrow:#B9B9B9;
 
         .zero {
             display: flex;
-            width: 244px;
+            //width: 244px;
+            width: 63.06vw;
         }
 
         .delete {
             display: flex;
             background-color: $background;
-            width: 114px;
+            //width: 114px;
 
             .delete_icon {
                 display: flex;

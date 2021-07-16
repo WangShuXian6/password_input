@@ -1,22 +1,25 @@
-.inputNumber{
+$height:262px;
+
+.inputNumber {
     position: relative;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     min-height: 52px;
     border: none;
-    
-    .fakeBox{
+
+    .fakeBox {
         display: flex;
         flex-direction: row;
         width: 100%;
         min-height: 52px;
         border: 2px solid #ddd;
         border-radius: 4px;
-        .wrapper{
+
+        .wrapper {
             position: relative;
             display: flex;
-            flex:1;
+            flex: 1;
             //width: 100%;
             //height: 100%;
             margin-top: 0;
@@ -27,49 +30,66 @@
             border: none;
             border-right: 1px solid #eee;
         }
-        .dot{
+
+        .dot {
             display: none;
-            background-color:#333 ;
+            background-color: #333;
             width: 6px;
             height: 6px;
             border-radius: 6px;
         }
-        .show{
+
+        .show {
             display: flex;
         }
-        .tip{
+
+        .tip {
             display: none;
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             width: 2px;
             height: 40px;
-            background-color:  #FF6200;
+            background-color: #FF6200;
             border: none;
         }
-        .tipShow{
+
+        .tipShow {
             display: flex;
             //animation: name duration timing-function delay iteration-count direction fill-mode;
-            animation: breath 1s  infinite;
+            animation: breath 1s infinite;
         }
 
         @keyframes breath {
-            0%{
+            0% {
                 opacity: 0;
             }
 
-            100%{
+            100% {
                 opacity: 1;
             }
         }
     }
 
-    .keyboard{
+    .keyboard {
+        position: relative;
         display: flex;
-        width: 100%;
+        width: 100vw;
+        height: $height;
+
+        .place {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            width: 100vw;
+            height: $height;
+        }
     }
-    .fixed{
+
+    .fixed {
         position: fixed;
         left: 0;
         bottom: 0;
