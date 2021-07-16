@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useImperativeHandle, forwardRef } from "react"
+import { useState, useEffect, useRef, useImperativeHandle, forwardRef, Ref } from "react"
 import styles from "./index.module.scss"
 import Keyboard from '../Keyboard'
 
@@ -9,7 +9,11 @@ interface Props {
     children?: any;
 }
 
-const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, ref: HTMLInputElement) => {
+interface ClearRef {
+    clear: () => void;
+}
+
+const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, ref: Ref<ClearRef>) => {
     const [fakeInputList, setFakeInputList] = useState<number[]>([])
 
     let [keyboardShow, setKeyBoardShow] = useState<Boolean>(true)
@@ -18,7 +22,6 @@ const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, re
     let passwordRef = useRef<string | null>(null)
     passwordRef.current = password
 
-    // @ts-ignore
     useImperativeHandle(ref, () => {
         return {
             clear: clearPassword
@@ -42,7 +45,7 @@ const InputNumber = ({ fields, isKeboardFixed, onComplete, children }: Props, re
     }
 
     const handleChange = (key: number) => {
-        if (passwordRef.current && passwordRef.current.length >= fields) return
+        if (passwordRef.current && passwordRef.current.length > fields) return
         const newPassword = `${passwordRef.current || ''}${key}`
         setPassword(newPassword)
     }

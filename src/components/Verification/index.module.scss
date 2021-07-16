@@ -9,7 +9,9 @@ $arrow:#B9B9B9;
     width: 100%;
     border: none;
 
-    .main {
-        letter-spacing: 10px;
+    .mainInput {
+        position: fixed;
+        top: -100vh;
+        left: -100vw;
     }
 }

@@ -54,6 +54,7 @@ const InputPassword = ({ focus, fields, onComplete, onBlur, onFocus }: Props, re
             setPassword(newValue)
             return
         }
+        if (passwordRef.current && passwordRef.current.length > fields) return
         setPassword(value)
     }
 
@@ -73,6 +74,8 @@ const InputPassword = ({ focus, fields, onComplete, onBlur, onFocus }: Props, re
 
     const clearPassword = () => {
         setPassword('')
+        if (!passwordInputEl.current) return
+        passwordInputEl.current.value = ''
     }
 
     const handleBlur = () => {
@@ -102,7 +105,7 @@ const InputPassword = ({ focus, fields, onComplete, onBlur, onFocus }: Props, re
             </div>
 
             <input type="tel"
-                //value={password}
+                value={password}
                 maxLength={fields}
                 className={styles.password}
                 // @ts-ignore

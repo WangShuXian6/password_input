@@ -44,3 +44,28 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# 数字键盘输入
+
+## InputNumber
+>数字密码键盘输入，自带键盘
+>仅支持整数
+
+### keyboard
+>数字键盘面板 美化版
+>仅支持整数
+
+## InputPassword [废弃]
+>数字密码键盘输入，使用系统键盘，有兼容性问题，不建议使用
+>仅支持整数
+
+### keyboardSimple
+>数字键盘面板 简单版
+>仅支持整数
+
+## Verification
+>验证码输入，使用系统键盘
+>支持
+>>纯数字[多用于数字短信验证码]
+>>数字+字母[多用于图形验证码]

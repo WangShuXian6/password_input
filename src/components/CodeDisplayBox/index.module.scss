@@ -1,0 +1,87 @@
+$gray:#ddd;
+$activeGray:#333;
+
+$tipColor:#FF6200;
+
+.codeDisplayBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 84vw;
+    height: 16vw;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 8vw;
+
+    .wrapper {
+        position: relative;
+        display: inline-flex;
+        width: 11.73vw;
+        height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-bottom: 2px solid $gray;
+    }
+
+    .wrapper.active {
+        border-bottom: 2px solid $activeGray;
+    }
+
+    .dot {
+        display: none;
+        background-color: #333;
+        width: 6px;
+        height: 6px;
+        border-radius: 6px;
+    }
+
+    .show {
+        display: flex;
+    }
+
+    .tip {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2px;
+        height: 24px;
+        background-color: $tipColor;
+        border: none;
+    }
+
+    .tipShow {
+        display: flex;
+        //animation: name duration timing-function delay iteration-count direction fill-mode;
+        animation: breath 1s infinite;
+    }
+
+    .word {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 24px;
+        font-family: DINAlternate-Bold, DINAlternate;
+        font-weight: bold;
+        color: #000000;
+        line-height: 24px;
+    }
+
+    @keyframes breath {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
