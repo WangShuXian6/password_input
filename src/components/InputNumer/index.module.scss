@@ -86,6 +86,10 @@ $height:262px;
             display: flex;
             width: 100vw;
             height: $height;
+
+            .fixed_place {
+                height: 224px;
+            }
         }
     }
 

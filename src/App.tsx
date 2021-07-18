@@ -55,13 +55,13 @@ function App() {
 
         {/* <Keyboard onKeyPress={() => { }} onDelete={() => { }} /> */}
 
-        {/* <InputNumber
+        <InputNumber
           fields={6}
-          isKeboardFixed={true}
+          isKeboardFixed={false}
           onComplete={handleComplete}
           ref={passwordRef}
         >
-        </InputNumber> */}
+        </InputNumber>
         <div className='blank'></div>
       </div>
     </div>
