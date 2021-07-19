@@ -29,37 +29,46 @@ $arrow:#B9B9B9;
 
         .arrow {
             position: absolute;
-            bottom: 16px;
-            right: 16px;
-
-
-            display: inline-block;
-            height: 12px;
-            //position: relative;
-            width: 12px;
-
-            transform: rotate(45deg);
+            top: 11px;
+            right: 8px;
+            width: 16px;
+            height: 16px;
+            display: flex;
         }
 
-        .arrow::before {
-            background-color: $arrow;
-        }
+        // .arrow {
+        //     position: absolute;
+        //     bottom: 16px;
+        //     right: 16px;
 
-        .arrow::after {
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-color: $arrow;
-            border-bottom-style: solid;
-            border-bottom-width: 2px;
-            border-right-style: solid;
-            border-right-width: 2px;
-            content: "";
 
-        }
+        //     display: inline-block;
+        //     height: 12px;
+        //     //position: relative;
+        //     width: 12px;
+
+        //     transform: rotate(45deg);
+        // }
+
+        // .arrow::before {
+        //     background-color: $arrow;
+        // }
+
+        // .arrow::after {
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        //     display: inline-block;
+        //     width: 12px;
+        //     height: 12px;
+        //     border-color: $arrow;
+        //     border-bottom-style: solid;
+        //     border-bottom-width: 2px;
+        //     border-right-style: solid;
+        //     border-right-width: 2px;
+        //     content: "";
+
+        // }
     }
 
     .row {

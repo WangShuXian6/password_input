@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react"
 import styles from "./index.module.scss"
 import deleteImage from './keyboard_delete@2x.png'
+import arrowImage from './keyboard_arrow@2x.png'
 
 interface Key {
     mainText: string | number, otherText: string, disable: boolean, bgColor: string
@@ -66,7 +67,8 @@ const Keyboard = ({ title = defaultTitle, onKeyPress, onDelete, onClose }: Props
         <div className={styles.keyboard}>
             <div className={styles.header}>
                 <div className={styles.title}>{title}</div>
-                <div className={styles.arrow} onClick={() => { handleClose() }}></div>
+                <img src={arrowImage} className={styles.arrow} alt="收起键盘" onClick={() => { handleClose() }} />
+                {/* <div className={styles.arrow} onClick={() => { handleClose() }}></div> */}
             </div>
             {
                 numberKeys.map((group, groupIndex) => (

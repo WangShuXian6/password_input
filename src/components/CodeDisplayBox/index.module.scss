@@ -3,6 +3,10 @@ $activeGray:#333;
 
 $tipColor:#FF6200;
 
+$keyFontSize:24px;
+$keyFontWeight:bold;
+$keyColor:#000;
+
 .codeDisplayBox {
     display: flex;
     flex-direction: row;
@@ -41,6 +45,13 @@ $tipColor:#FF6200;
 
     .show {
         display: flex;
+    }
+
+    .word {
+        font-weight: $keyFontWeight;
+        color: $keyColor;
+        font-size: $keyFontSize;
+        user-select: none;
     }
 
     .tip {
