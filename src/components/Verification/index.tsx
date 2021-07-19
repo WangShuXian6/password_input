@@ -62,6 +62,7 @@ const Verification = ({ fields, isNumber = false, isPassword = false, onComplete
     const handleFocus = useCallback(() => {
         if (!inputRef.current) return
         inputRef.current.focus()
+
         console.log('focus')
     }, [])
 

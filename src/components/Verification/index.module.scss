@@ -2,12 +2,15 @@
     position: relative;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     width: 100%;
     border: none;
 
     .mainInput {
-        position: fixed;
-        top: -100vh;
-        left: -100vw;
+        z-index: -100;
+        opacity: 0;
+        display: flex;
+        width: 0px;
+        height: 0px;
     }
 }

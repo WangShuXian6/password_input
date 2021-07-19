@@ -48,21 +48,29 @@ function App() {
       <div className='main'>
 
         <div className="tip">{tip}</div>
-        <Verification ref={verificationRef} fields={4} isPassword={false} isNumber={true} onComplete={handleComplete}></Verification>
+        {/* <Verification ref={verificationRef} fields={4} isPassword={false} isNumber={true} onComplete={handleComplete}></Verification> */}
+        <div className="tip password">{password}</div>
+        <div className="tip password">{password}</div>
+        <div className="tip password">{password}</div>
+        <div className="tip password">{password}</div>
+        <div className="tip password">{password}</div>
+
         <div className="tip password">{password}</div>
         <div className="tip" onClick={focus}>聚焦</div>
         <div className="tip password" onClick={clear}>清空</div>
 
         {/* <Keyboard onKeyPress={() => { }} onDelete={() => { }} /> */}
 
-        <InputNumber
+        {/* <InputNumber
           fields={6}
           isKeboardFixed={false}
           onComplete={handleComplete}
           ref={passwordRef}
         >
-        </InputNumber>
+        </InputNumber> */}
         <div className='blank'></div>
+        <Verification ref={verificationRef} fields={4} isPassword={false} isNumber={true} onComplete={handleComplete}></Verification>
+        {/* <div className="tip password">{password}</div> */}
       </div>
     </div>
   );
