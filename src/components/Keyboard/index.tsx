@@ -54,9 +54,9 @@ const Keyboard = ({ title = defaultTitle, onKeyPress, onDelete, onClose }: Props
         }
         onKeyPress(Number(key.mainText))
         setSelectKeyString(key.mainText)
-        setTimeout(() => {
-            setSelectKeyString('')
-        }, 50)
+        // setTimeout(() => {
+        //     setSelectKeyString('')
+        // }, 50)
     }, [])
 
     const handleClose = useCallback(() => {

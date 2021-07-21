@@ -14,7 +14,7 @@ export interface ClearRef {
     focus: () => void;
 }
 
-const Verification = ({ fields, isNumber = false, isPassword = false, onComplete }: Props, ref: Ref<ClearRef>) => {
+const Verification2 = ({ fields, isNumber = false, isPassword = false, onComplete }: Props, ref: Ref<ClearRef>) => {
     const [words, setWords] = useState<string>('')
     const wordsRef = useRef<string | null>(null)
     wordsRef.current = words
@@ -89,18 +89,16 @@ const Verification = ({ fields, isNumber = false, isPassword = false, onComplete
         setTimeout(() => {
             inputRef.current?.focus()
         }, 10)
-        
+
         setTimeout(() => {
-            if(!wordsRef.current)return
-            const lastIndex=wordsRef.current.length-1
-            inputRef.current?.setSelectionRange(lastIndex+1, lastIndex+1);
+            inputRef.current?.setSelectionRange(-1, -1);
             //光标定位到末尾
         }, 20)
     }
 
-    const keyDownHandler=(e:KeyboardEvent<HTMLInputElement>)=>{
-        console.log('keyDown::',e)
-        console.log('keyDown:key:',e.key)
+    const keyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        console.log('keyDown::', e)
+        console.log('keyDown:key:', e.key)
     }
 
     return (
@@ -108,36 +106,43 @@ const Verification = ({ fields, isNumber = false, isPassword = false, onComplete
             <div onClick={handleFocus}>
                 <CodeDisplayBox length={fields} words={words} isPassword={isPassword} />
             </div>
+
             {
-                !isNumber && <input
-                    ref={inputRef}
-                    className={styles.mainInput}
-                    type="password"
-                    autoCorrect="off"
-                    autoCapitalize="off"
-                    maxLength={fields}
-                    onInput={handleChange}
-                    onKeyDown={keyDownHandler}
-                />
+                !isNumber && new Array(length).fill('').map((item, index) => (
+                    <input
+                        key={index}
+                        //ref={inputRef}
+                        className={styles.mainInput}
+                        type="password"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        maxLength={1}
+                        onInput={handleChange}
+                        onKeyDown={keyDownHandler}
+                    />
+                ))
             }
 
             {
-                isNumber && <input
-                    ref={inputRef}
-                    className={styles.mainInput}
-                    type="text"
-                    inputMode="numeric"
-                    autoCorrect="off"
-                    autoCapitalize="off"
-                    maxLength={fields}
-                    //onKeyDown={keyUpHandler}
-                    onInput={handleChange}
-                    onKeyDown={keyDownHandler}
-                />
+                isNumber && new Array(length).fill('').map((item, index) => (
+                    <input
+                        key={index}
+                        //ref={inputRef}
+                        className={styles.mainInput}
+                        type="text"
+                        inputMode="numeric"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        maxLength={1}
+                        //onKeyDown={keyUpHandler}
+                        onInput={handleChange}
+                        onKeyDown={keyDownHandler}
+                    />
+                ))
             }
 
 
         </div>
     )
 }
-export default forwardRef(Verification)
+export default forwardRef(Verification2)

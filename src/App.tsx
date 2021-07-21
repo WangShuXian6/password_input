@@ -14,6 +14,8 @@ function App() {
 
   const verificationRef = useRef<ClearRef>(null)
 
+  const demoRef = useRef<HTMLInputElement>(null)
+
   const clear = () => {
     if (!verificationRef.current) return
     verificationRef.current.clear()
@@ -46,7 +48,6 @@ function App() {
       </header> */}
 
       <div className='main'>
-
         <div className="tip">{tip}</div>
         {/* <Verification ref={verificationRef} fields={4} isPassword={false} isNumber={true} onComplete={handleComplete}></Verification> */}
         <div className="tip password">{password}</div>
@@ -69,8 +70,11 @@ function App() {
         >
         </InputNumber> */}
         <div className='blank'></div>
-        <Verification ref={verificationRef} fields={4} isPassword={false} isNumber={true} onComplete={handleComplete}></Verification>
+        <Verification ref={verificationRef} fields={4} isPassword={false} isNumber={false} onComplete={handleComplete}></Verification>
         {/* <div className="tip password">{password}</div> */}
+
+
+
       </div>
     </div>
   );
