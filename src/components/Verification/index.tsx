@@ -115,6 +115,7 @@ const Verification = ({ fields, isNumber = false, isPassword = false, onComplete
                     type="password"
                     autoCorrect="off"
                     autoCapitalize="off"
+                    autoComplete="off"
                     maxLength={fields}
                     onInput={handleChange}
                     onKeyDown={keyDownHandler}
@@ -129,6 +130,7 @@ const Verification = ({ fields, isNumber = false, isPassword = false, onComplete
                     inputMode="numeric"
                     autoCorrect="off"
                     autoCapitalize="off"
+                    autoComplete="off"
                     maxLength={fields}
                     //onKeyDown={keyUpHandler}
                     onInput={handleChange}

@@ -31,6 +31,10 @@ $height:262px;
             border-right: 1px solid #eee;
         }
 
+        .wrapper:nth-last-child(1){
+            border-right: none;
+        }
+
         .dot {
             display: none;
             background-color: #333;
